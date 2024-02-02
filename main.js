@@ -1,7 +1,8 @@
 function scrollDown(){
-scrollButton.addEventListener("click", () => {
-const scrollButton = document.getElementById("button");
-const scrollContainer = document.getElementById("chat");
+  const scrollButton = document.getElementById("button");
+  
+  scrollButton.addEventListener("click", () => {
+  const scrollContainer = document.getElementById("chat");
 scrollContainer.scrollTop = scrollContainer.scrollHeight - scrollContainer.clientHeight;
 });
 
