@@ -4,30 +4,35 @@ import websockets
 from datetime import datetime
 import json
 
-async def brodcast_message(websocket, name, message_text, message_time):
+connections = set()
+
+def brodcast_message(name, message_text, message_time):
     event = {
         "type": "chat_response",
         "time": message_time,
         "name": name,
         "message_text": message_text,
     }
-    websockets.broadcast(websocket, json.dumps(event))
+    websockets.broadcast(connections, json.dumps(event))
+    print("Rozpowszechnianie")
 
 async def handler(websocket):
-    async for message in websocket:
-        print(message)                                      #debigging
-        message_time = datetime.now().strftime("%H:%M:%S")
-        event = json.loads(message)
-        assert event["type"] == "chat"
+    connections.add(websocket)
+
+    async for incomming_message in websocket:
+        event = json.loads(incomming_message)
+
         name = event["name"]
-        message_text = event["message_text"]
-        brodcast_message(websocket, name, message_text, message_time)
-
-
+        message = event["message"]
+        time = datetime.now().strftime("%H:%M:%S")
+        print("Odebrano")
+        print(f'{name} {time}: {message}')
+        brodcast_message(name, message, time)
+    
 
 async def main():
-    async with websockets.serve(handler, "", 8001):
-        await asyncio.Future()  # run forever
+    async with websockets.serve(handler, "", 7777):
+        await asyncio.Future()
 
 
 if __name__ == "__main__":
