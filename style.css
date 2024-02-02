@@ -1,3 +1,45 @@
 span {
-    color: red;
+    font-weight: bold;
+}
+p {
+    padding-left: 40px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.chat{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    height: 400px;
+    width: 800px;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    overflow-y: auto;
+    padding: 40px;
+}
+.underchat{
+    display: flex;
+    flex-direction: column;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+}
+label {
+    align-self: center;
+    padding: 10px;
+}
+.button {
+    width: 100px;
+    align-self: center;
+    padding: 10px;
+    margin: 15px;
+}
+.name {
+    width: 150px;
+    align-self: center;
 }
