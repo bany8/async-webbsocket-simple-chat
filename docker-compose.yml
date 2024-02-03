@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "8888:80"
+    container_name: client
+
+  chat:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "7777:7777"
+    container_name: server
