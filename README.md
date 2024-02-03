@@ -1,4 +1,4 @@
-# Asyncy Socket Simple Web Chat
+# Async Socket Simple Web Chat
 
 ## What is it?
 
