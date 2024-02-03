@@ -19,19 +19,22 @@ def brodcast_message(name, message_text, message_time):
 async def handler(websocket):
     connections.add(websocket)
 
-    async for incomming_message in websocket:
-        event = json.loads(incomming_message)
+    try:
+        async for incomming_message in websocket:
+            event = json.loads(incomming_message)
 
-        if event["name"] == "":
-            name = "Unnamed###"
-        else:
-            name = event["name"]
+            if event["name"] == "":
+                name = "Unnamed###"
+            else:
+                name = event["name"]
 
-        message = event["message"]
-        time = datetime.now().strftime("%H:%M:%S")
-        print("Odebrano")
-        print(f'{name} {time}: {message}')
-        brodcast_message(name, message, time)
+            message = event["message"]
+            time = datetime.now().strftime("%H:%M:%S")
+            print("Odebrano")
+            print(f'{name} {time}: {message}')
+            brodcast_message(name, message, time)
+    finally:
+        connections.discard(websocket)
     
 
 async def main():

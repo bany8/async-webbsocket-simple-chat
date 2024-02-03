@@ -43,6 +43,11 @@ function receiveMessage(websocket) {
 
 window.addEventListener("DOMContentLoaded", () => {
   const websocket = new WebSocket("ws://localhost:7777/");
+
+  window.addEventListener("beforeunload", () => {
+    websocket.close();
+  });
+  
   sendMessage(websocket);
   receiveMessage(websocket);
 });
