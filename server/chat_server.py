@@ -23,10 +23,7 @@ async def handler(websocket):
         async for incomming_message in websocket:
             event = json.loads(incomming_message)
 
-            if event["name"] == "":
-                name = "Unnamed###"
-            else:
-                name = event["name"]
+            name = event["name"] if event["name"] != "" else "Unnamed###"
 
             message = event["message"]
             time = datetime.now().strftime("%H:%M:%S")
