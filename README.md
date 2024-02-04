@@ -3,10 +3,7 @@
 ## What is it?
 
 
-This is a multi-user live chat application designed for browsers. It maintains user data on the client side, resetting every time the site is refreshed. The application is built with a Python WebSocket server and an HTML, CSS, and JavaScript client site. It is deployed using an Nginx web server for the website and a Python asynchronous server.
-
-Both servers are runningruns locally on you machine and in this form can be your local network chat. Becoause of that fact,when deploying it to the world wide web, python server works only locally. 
-
+This is a multi-user live chat application designed for browsers. It maintains user data on the client side, resetting every time the site is refreshed. The application is built with a Python WebSocket server and an HTML, CSS, and JavaScript client site. It is deployed using an Nginx web server for the website and a Python asynchronous server. Both servers are runningruns locally on you machine and in this form can be your local network chat. 
 
 ## How to run it?
 
