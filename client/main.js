@@ -1,10 +1,6 @@
 function scrollDown(){
-  const scrollButton = document.getElementById("button");
-  
-  scrollButton.addEventListener("click", () => {
   const scrollContainer = document.getElementById("chat");
   scrollContainer.scrollTop = scrollContainer.scrollHeight - scrollContainer.clientHeight;
-  });
 }
 
 function send(websocket, inputElement) {
@@ -19,6 +15,7 @@ function send(websocket, inputElement) {
   websocket.send(JSON.stringify(event));
   
   inputElement.value = "";
+  
 }
 
 function sendMessage(websocket) {
