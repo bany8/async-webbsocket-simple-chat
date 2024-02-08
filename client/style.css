@@ -1,14 +1,19 @@
+body {
+    background-color: #374268;
+}
 span {
     font-weight: bold;
 }
 p {
     padding-left: 40px;
+    color: white;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 30px;
 }
 .chat{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -29,17 +34,7 @@ form {
     flex-direction: column;
     width: 800px;
 }
-label {
-    align-self: center;
-    padding: 10px;
-}
-.button {
-    width: 100px;
-    align-self: center;
-    padding: 10px;
-    margin: 15px;
-}
-.name {
-    width: 150px;
-    align-self: center;
+
+.btn {
+    margin-top: 15px;
 }

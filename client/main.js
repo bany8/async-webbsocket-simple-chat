@@ -3,23 +3,36 @@ function scrollDown(){
   
   scrollButton.addEventListener("click", () => {
   const scrollContainer = document.getElementById("chat");
-scrollContainer.scrollTop = scrollContainer.scrollHeight - scrollContainer.clientHeight;
-});
+  scrollContainer.scrollTop = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+  });
+}
 
+function send(websocket, inputElement) {
+  const name = document.getElementById("name").value;
+  const message = document.getElementById("message").value;
+
+  const event = {
+    "type": "chat",
+    "name": name,
+    "message": message,
+  };
+  websocket.send(JSON.stringify(event));
+  
+  inputElement.value = "";
 }
 
 function sendMessage(websocket) {
   const button = document.getElementById("button");
-  button.addEventListener("click", () => {
-    const name = document.getElementById("name").value;
-    const message = document.getElementById("message").value;
+  const inputElement = document.getElementById("message");
 
-    const event = {
-      "type": "chat",
-      "name": name,
-      "message": message,
-    };
-    websocket.send(JSON.stringify(event));
+  inputElement.addEventListener("keyup", (event) => {
+    if (event.key === "Enter") {
+      send(websocket, inputElement);
+    }
+  });
+  
+  button.addEventListener("click", () => {
+    send(websocket, inputElement);
   });
 }
 
